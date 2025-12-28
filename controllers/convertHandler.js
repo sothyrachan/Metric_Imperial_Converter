@@ -1,13 +1,23 @@
 function ConvertHandler() {
   this.getNum = function (input) {
     let result;
-    result = input.match(/\d+[.\/]?\d+/g);
+    result = input.match(/[.\d\/]+/g);
+    if (result) {
+      result = result[0];
+    }
+    if (input.match(/\d+[\/]\d+[\/]\d+/g)) {
+      console.log("invalid number");
+    } else if (!Number(input)) {
+      result = 1;
+    } else {
+      console.log("Error occurred");
+    }
     return result;
   };
 
   this.getUnit = function (input) {
     let result;
-
+    
     return result;
   };
 
