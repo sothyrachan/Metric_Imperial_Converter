@@ -1,14 +1,11 @@
 function ConvertHandler() {
   this.getNum = function (input) {
     let result;
-    result = input.match(/[.\d\/]+/g);
-    if (result) {
-      result = result[0];
-    }
+    result = input.match(/\d+[.\/]?\d+/g);
     if (input.match(/\d+[\/]\d+[\/]\d+/g)) {
       console.log("invalid number");
     } else if (!Number(input)) {
-      result = 1;
+      result++;
     } else {
       console.log("Error occurred");
     }
@@ -17,7 +14,7 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result;
-    
+
     return result;
   };
 
