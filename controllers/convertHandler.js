@@ -31,12 +31,20 @@ function ConvertHandler() {
   };
 
   this.convert = function (initNum, initUnit) {
-    const galToL = 3.78541;
-    const lbsToKg = 0.453592;
-    const miToKm = 1.60934;
-    let result;
+    const conversions = {
+      gal: { litter: 3.78541, toUnit: "l" },
+      lbs: { kiligram: 0.453592, toUnit: "kg" },
+      mi: { kilometer: 1.60934, toUnit: "km" },
+    };
 
-    return result;
+    if (conversions[initUnit]) {
+      throw new Error(`Invalid unit input ${initUnit}`);
+    }
+
+    const { litter, toUnit } = conversions[initUnit];
+    let result = initNum * litter;
+
+    return `${result}${toUnit}`;
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
