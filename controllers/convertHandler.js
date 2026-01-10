@@ -26,7 +26,7 @@ function ConvertHandler() {
 
   this.spellOutUnit = function (unit) {
     let result;
-
+    result = unit;
     return result;
   };
 
