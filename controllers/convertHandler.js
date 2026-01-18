@@ -1,15 +1,34 @@
 function ConvertHandler() {
   this.getNum = function (input) {
-    let result;
-    result = input.match(/\d+[.\/]?\d+/g);
-    if (input.match(/\d+[\/]\d+[\/]\d+/g)) {
-      console.log("invalid number");
-    } else if (!Number(input)) {
-      result++;
-    } else {
-      console.log("Error occurred");
+    let result = "";
+
+    for (let i = 0; i < input.length; i++) {
+      const inputChar = input[i];
+      if (
+        (inputChar >= "0" && inputChar <= "9") ||
+        inputChar === "." ||
+        inputChar === "/"
+      ) {
+        result += inputChar;
+      } else {
+        break;
+      }
     }
-    return result;
+
+    if (result === "") return 1;
+
+    const countSlash = (result.match(/\//g) || []).length;
+    if (countSlash > 1) throw new Error("invalid number");
+
+    if (countSlash === 1) {
+      const [numerator, denominator] = result.split("/");
+      const num = Number(numerator);
+      const deno = Number(denominator);
+      return isNaN(num) || isNaN(deno) ? "invalid number" : num / deno;
+    }
+
+    const num = Number(result);
+    return isNaN(num) ? "invalid number" : num;
   };
 
   this.getUnit = function (input) {
