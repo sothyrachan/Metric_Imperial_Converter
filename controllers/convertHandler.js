@@ -32,7 +32,22 @@ function ConvertHandler() {
   };
 
   this.getUnit = function (input) {
-    let result;
+    let result = "";
+
+    for (let i = 0; i < input.length; i++) {
+      const inputChar = input[i];
+
+      if (
+        isNaN(inputChar) &&
+        inputChar !== "." &&
+        inputChar !== "/" &&
+        inputChar.match(/[a-zA-Z]/)
+      ) {
+        result += inputChar;
+      } else {
+        continue;
+      }
+    }
 
     return result;
   };
