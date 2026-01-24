@@ -53,14 +53,29 @@ function ConvertHandler() {
   };
 
   this.getReturnUnit = function (initUnit) {
-    let result;
+    const result = {
+      gal: "l",
+      lbs: "kg",
+      mi: "km",
+    };
 
-    return result;
+    return result[initUnit.toLowerCase() || undefined];
   };
 
   this.spellOutUnit = function (unit) {
-    let result;
-    result = unit;
+    let result = "";
+
+    let units = {
+      gal: "gallons",
+      lbs: "pounds",
+      mi: "miles",
+      l: "liters",
+      kg: "kilograms",
+      km: "kilometers",
+    };
+
+    result = units[unit.toLowerCase()];
+
     return result;
   };
 
