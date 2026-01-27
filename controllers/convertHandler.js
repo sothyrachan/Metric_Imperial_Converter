@@ -57,6 +57,9 @@ function ConvertHandler() {
       gal: "l",
       lbs: "kg",
       mi: "km",
+      l: "gal",
+      kg: "lbs",
+      km: "mi",
     };
 
     return result[initUnit.toLowerCase() || undefined];
@@ -81,25 +84,25 @@ function ConvertHandler() {
 
   this.convert = function (initNum, initUnit) {
     const conversions = {
-      gal: { litter: 3.78541, toUnit: "l" },
-      lbs: { kiligram: 0.453592, toUnit: "kg" },
-      mi: { kilometer: 1.60934, toUnit: "km" },
+      gal: 3.78541,
+      l: 1 / 3.78541,
+      lbs: 0.453592,
+      kg: 1 / 0.453592,
+      mi: 1.60934,
+      km: 1 / 1.60934,
     };
 
-    if (conversions[initUnit]) {
+    if (!conversions[initUnit]) {
       throw new Error(`Invalid unit input ${initUnit}`);
     }
 
-    const { litter, toUnit } = conversions[initUnit];
-    let result = initNum * litter;
+    let result = Number((initNum * conversions[initUnit]).toFixed(5));
 
-    return `${result}${toUnit}`;
+    return result;
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result;
-
-    return result;
+    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
   };
 }
 
