@@ -27,9 +27,7 @@ suite('Unit Tests', function() {
       });
 
       test('Test An Error on Double-Fraction Input', function() {
-        const actualInputVal = "2/5/8lbs";
-        const expectedInputVal = "2/5lbs";
-        assert.fail(convertHandler.getNum(actualInputVal), expectedInputVal, 'Value like double-fraction should not be allowed', '2/5');
+        assert.equal(convertHandler.getNum("2/5/8lbs"), "invalid number");
       });
 
     });
