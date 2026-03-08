@@ -18,7 +18,7 @@ function ConvertHandler() {
     if (result === "") return 1;
 
     const countSlash = (result.match(/\//g) || []).length;
-    if (countSlash > 1) throw new Error("invalid number");
+    if (countSlash > 1) return "invalid number";
 
     if (countSlash === 1) {
       const [numerator, denominator] = result.split("/");
