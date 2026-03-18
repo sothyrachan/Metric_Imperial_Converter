@@ -59,5 +59,9 @@ suite("Unit Tests", function () {
       assert.equal(convertHandler.getUnit("0.4mi"), "mi");
       assert.equal(convertHandler.getUnit("6.3/0.9lbs"), "lbs");
     });
+
+    test("Test for Correctly Returning Error Message for Multiple Slash Input", function () {
+      assert.strictEqual(convertHandler.getNum("0.03/4/3.90"), "invalid number");
+    });
   });
 });
