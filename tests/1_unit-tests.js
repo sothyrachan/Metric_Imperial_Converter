@@ -60,8 +60,25 @@ suite("Unit Tests", function () {
       assert.equal(convertHandler.getUnit("6.3/0.9lbs"), "lbs");
     });
 
-    test("Test for Correctly Returning Error Message for Multiple Slash Input", function () {
+    test("Test for Correct Return Error Message for Multiple Slash Input", function () {
       assert.strictEqual(convertHandler.getNum("0.03/4/3.90"), "invalid number");
     });
+
+    const result = {
+      gal: "l",
+      lbs: "kg",
+      mi: "km",
+      l: "gal",
+      kg: "lbs",
+      km: "mi",
+    };
+    
+    test("Test for Correct Return Unit for Valid Input Unit", function () {
+      assert.strictEqual(convertHandler.getReturnUnit("gal"), "l");
+      assert.strictEqual(convertHandler.getReturnUnit("lbs"), "kg");
+      assert.strictEqual(convertHandler.getReturnUnit("kg"), "lbs");
+      assert.strictEqual(convertHandler.getReturnUnit("mi"), "km");
+    });
+    
   });
 });
