@@ -63,15 +63,6 @@ suite("Unit Tests", function () {
     test("Test for Correct Return Error Message for Multiple Slash Input", function () {
       assert.strictEqual(convertHandler.getNum("0.03/4/3.90"), "invalid number");
     });
-
-    const result = {
-      gal: "l",
-      lbs: "kg",
-      mi: "km",
-      l: "gal",
-      kg: "lbs",
-      km: "mi",
-    };
     
     test("Test for Correct Return Unit for Valid Input Unit", function () {
       assert.strictEqual(convertHandler.getReturnUnit("gal"), "l");
@@ -79,6 +70,14 @@ suite("Unit Tests", function () {
       assert.strictEqual(convertHandler.getReturnUnit("kg"), "lbs");
       assert.strictEqual(convertHandler.getReturnUnit("mi"), "km");
     });
-    
+
+    test("Test for Correct Spelled-out String Unit for Each Valid Input Unit", function () {
+      assert.strictEqual(convertHandler.spellOutUnit("gal"), "gallons");
+      assert.strictEqual(convertHandler.spellOutUnit("lbs"), "pounds");
+      assert.strictEqual(convertHandler.spellOutUnit("mi"), "miles");
+      assert.strictEqual(convertHandler.spellOutUnit("l"), "liters");
+      assert.strictEqual(convertHandler.spellOutUnit("kg"), "kilograms");
+      assert.strictEqual(convertHandler.spellOutUnit("km"), "kilometers"); 
+    });
   });
 });
