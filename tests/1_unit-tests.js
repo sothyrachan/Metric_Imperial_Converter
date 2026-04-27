@@ -79,5 +79,10 @@ suite("Unit Tests", function () {
       assert.strictEqual(convertHandler.spellOutUnit("kg"), "kilograms");
       assert.strictEqual(convertHandler.spellOutUnit("km"), "kilometers"); 
     });
+
+    test("Test for All Conversions", function() {
+        assert.equal(convertHandler.convert(1, "gal"), 3.78541);
+    });
+
   });
 });
